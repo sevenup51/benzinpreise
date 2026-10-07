@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Tagesauswertung 08:20:10</title>
+<title>Tagesauswertung 09:15:56</title>
 <style>
 body {
     font-family: Arial, sans-serif;
@@ -21,6 +21,22 @@ h1 { margin-bottom: 4px; }
     border-radius: 6px;
     margin: 8px 0 22px;
 }
+.gruppe { margin: 0 0 36px; }
+.gruppe-titel {
+    margin: 0 0 8px;
+    padding-bottom: 4px;
+    border-bottom: 3px solid #0b57d0;
+}
+.klapp { cursor: pointer; user-select: none; }
+.icon {
+    display: inline-block;
+    font-weight: bold;
+    transition: transform 0.2s ease-in-out;
+}
+.icon.open { transform: rotate(90deg); }
+.hidden { display: none; }
+.abschnitt { margin: 16px 0 10px; }
+.ort-titel { margin: 14px 0 8px; color: #0b57d0; }
 .ort-grid, .station-grid {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -34,31 +50,37 @@ h1 { margin-bottom: 4px; }
     padding: 12px 14px;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
 }
-.auswertung h2, .station h3, .ort-stationen h2 {
-    margin: 0 0 4px;
+.auswertung h3, .station h3 { margin: 0 0 8px; }
+.kraftstoff {
+    border-collapse: collapse;
+    width: 100%;
+    font-size: 12px;
 }
-.auswertung h3 {
-    margin: 0 0 12px;
-    color: #0b57d0;
+.kraftstoff th, .kraftstoff td {
+    vertical-align: top;
+    text-align: left;
+    padding: 6px 4px;
+    border-bottom: 1px solid #e4e8ee;
 }
-.auswertung h4 {
-    margin: 14px 0 6px;
-    padding-top: 8px;
-    border-top: 1px solid #e4e8ee;
+.kraftstoff th {
+    background: #333;
+    color: #fff;
 }
-.zeile { margin: 0 0 8px; }
-.zeile.illegal, tr.illegal td, td.illegal {
+.kraftstoff th.merkmal {
+    width: 34%;
+    background: transparent;
+    color: #333;
+    font-weight: normal;
+    white-space: normal;
+    overflow-wrap: anywhere;
+}
+.kraftstoff td.leer { color: #777; }
+.kraftstoff td.illegal, tr.illegal td, td.illegal {
     background: #ffc9c9;
 }
-.zeile.illegal {
-    border-radius: 6px;
-    padding: 4px 6px;
-}
-.label { font-size: 13px; color: #333; }
 .preis { font-weight: 700; font-variant-numeric: tabular-nums; }
-.preis.leer { font-weight: 400; color: #777; }
-.ab { font-weight: 400; color: #555; font-size: 12px; }
-.stationen { font-size: 13px; margin-top: 2px; }
+.ab { font-weight: 400; color: #555; font-size: 11px; }
+.stationen { font-size: 11px; margin-top: 2px; overflow-wrap: anywhere; }
 .adresse { margin: 0 0 8px; color: #555; font-size: 13px; }
 .messwerte { max-height: 320px; overflow: auto; }
 .station table {
@@ -79,350 +101,23 @@ h1 { margin-bottom: 4px; }
     border-bottom: 1px solid #e4e8ee;
     font-variant-numeric: tabular-nums;
 }
-.ort-stationen { margin-top: 8px; }
-.ort-stationen h2 { margin: 18px 0 10px; }
 @media (max-width: 1100px) {
     .ort-grid, .station-grid { grid-template-columns: 1fr; }
 }
 </style>
+<script>
+function toggleKlapp(id) {
+    var block = document.getElementById(id);
+    var icon = document.getElementById("icon-" + id);
+    block.classList.toggle("hidden");
+    icon.classList.toggle("open");
+}
+</script>
 </head>
 <body>
-<h1>Tagesauswertung 08:20:10</h1>
+<h1>Tagesauswertung 09:15:56</h1>
 <p class="hinweis">07.10.2026 · <a href="preis_summary_aktuell.html">ausführliche Liste</a></p>
-<div class="ort-grid">
-<article class='kachel auswertung'>
-<h2>Tagesauswertung 08:20:10</h2>
-<h3>Donauwörth</h3>
-<h4>E5</h4>
-<div class='zeile'>
-<div class='label'>erster günstigster Preis des Tages (07:00–08:00)</div>
-<div class='preis'>2,099 <span class='ab'>ab 07:20:08</span></div>
-<div class='stationen'>Tankstelle Oberholzner</div>
-</div>
-<div class='zeile'>
-<div class='label'>erster teuerster Preis des Tages (07:00–08:00)</div>
-<div class='preis'>2,239 <span class='ab'>ab 07:20:08</span></div>
-<div class='stationen'>TotalEnergies Donauwörth<br>Esso Nürnberger Straße<br>Esso Dillinger Straße<br>AGIP ENI Donauwörth</div>
-</div>
-<div class='zeile'>
-<div class='label'>günstigster Preis (11:00–11:59)</div>
-<div class='preis leer'>keine Messung</div>
-</div>
-<div class='zeile'>
-<div class='label'>teuerster Preis (11:00–11:59)</div>
-<div class='preis leer'>keine Messung</div>
-</div>
-<div class='zeile'>
-<div class='label'>günstigster Preis (13:00–23:59)</div>
-<div class='preis leer'>keine Messung</div>
-</div>
-<div class='zeile'>
-<div class='label'>teuerster Preis (13:00–23:59)</div>
-<div class='preis leer'>keine Messung</div>
-</div>
-<h4>E10</h4>
-<div class='zeile'>
-<div class='label'>erster günstigster Preis des Tages (07:00–08:00)</div>
-<div class='preis'>2,069 <span class='ab'>ab 07:20:08</span></div>
-<div class='stationen'>Tankstelle Oberholzner</div>
-</div>
-<div class='zeile'>
-<div class='label'>erster teuerster Preis des Tages (07:00–08:00)</div>
-<div class='preis'>2,179 <span class='ab'>ab 07:20:08</span></div>
-<div class='stationen'>TotalEnergies Donauwörth<br>Esso Nürnberger Straße<br>Esso Dillinger Straße<br>AGIP ENI Donauwörth</div>
-</div>
-<div class='zeile'>
-<div class='label'>günstigster Preis (11:00–11:59)</div>
-<div class='preis leer'>keine Messung</div>
-</div>
-<div class='zeile'>
-<div class='label'>teuerster Preis (11:00–11:59)</div>
-<div class='preis leer'>keine Messung</div>
-</div>
-<div class='zeile'>
-<div class='label'>günstigster Preis (13:00–23:59)</div>
-<div class='preis leer'>keine Messung</div>
-</div>
-<div class='zeile'>
-<div class='label'>teuerster Preis (13:00–23:59)</div>
-<div class='preis leer'>keine Messung</div>
-</div>
-<h4>Diesel</h4>
-<div class='zeile'>
-<div class='label'>erster günstigster Preis des Tages (07:00–08:00)</div>
-<div class='preis'>2,249 <span class='ab'>ab 07:20:08</span></div>
-<div class='stationen'>Bavaria Petrol Donauwörth<br>Tankstelle Oberholzner</div>
-</div>
-<div class='zeile'>
-<div class='label'>erster teuerster Preis des Tages (07:00–08:00)</div>
-<div class='preis'>2,269 <span class='ab'>ab 07:20:08</span></div>
-<div class='stationen'>AGIP ENI Donauwörth</div>
-</div>
-<div class='zeile'>
-<div class='label'>günstigster Preis (11:00–11:59)</div>
-<div class='preis leer'>keine Messung</div>
-</div>
-<div class='zeile'>
-<div class='label'>teuerster Preis (11:00–11:59)</div>
-<div class='preis leer'>keine Messung</div>
-</div>
-<div class='zeile'>
-<div class='label'>günstigster Preis (13:00–23:59)</div>
-<div class='preis leer'>keine Messung</div>
-</div>
-<div class='zeile'>
-<div class='label'>teuerster Preis (13:00–23:59)</div>
-<div class='preis leer'>keine Messung</div>
-</div>
-</article><article class='kachel auswertung'>
-<h2>Tagesauswertung 08:20:10</h2>
-<h3>Bäumenheim</h3>
-<h4>E5</h4>
-<div class='zeile'>
-<div class='label'>erster günstigster Preis des Tages (07:00–08:00)</div>
-<div class='preis'>2,189 <span class='ab'>ab 07:20:08</span></div>
-<div class='stationen'>SEEL Asbach-Bäumenheim</div>
-</div>
-<div class='zeile'>
-<div class='label'>erster teuerster Preis des Tages (07:00–08:00)</div>
-<div class='preis'>2,199 <span class='ab'>ab 07:20:08</span></div>
-<div class='stationen'>Tankstelle Kuntze Bäumenheim</div>
-</div>
-<div class='zeile'>
-<div class='label'>günstigster Preis (11:00–11:59)</div>
-<div class='preis leer'>keine Messung</div>
-</div>
-<div class='zeile'>
-<div class='label'>teuerster Preis (11:00–11:59)</div>
-<div class='preis leer'>keine Messung</div>
-</div>
-<div class='zeile'>
-<div class='label'>günstigster Preis (13:00–23:59)</div>
-<div class='preis leer'>keine Messung</div>
-</div>
-<div class='zeile'>
-<div class='label'>teuerster Preis (13:00–23:59)</div>
-<div class='preis leer'>keine Messung</div>
-</div>
-<h4>E10</h4>
-<div class='zeile'>
-<div class='label'>erster günstigster Preis des Tages (07:00–08:00)</div>
-<div class='preis'>2,139 <span class='ab'>ab 07:20:08</span></div>
-<div class='stationen'>Tankstelle Kuntze Bäumenheim</div>
-</div>
-<div class='zeile'>
-<div class='label'>erster teuerster Preis des Tages (07:00–08:00)</div>
-<div class='preis'>2,149 <span class='ab'>ab 07:20:08</span></div>
-<div class='stationen'>SEEL Asbach-Bäumenheim</div>
-</div>
-<div class='zeile'>
-<div class='label'>günstigster Preis (11:00–11:59)</div>
-<div class='preis leer'>keine Messung</div>
-</div>
-<div class='zeile'>
-<div class='label'>teuerster Preis (11:00–11:59)</div>
-<div class='preis leer'>keine Messung</div>
-</div>
-<div class='zeile'>
-<div class='label'>günstigster Preis (13:00–23:59)</div>
-<div class='preis leer'>keine Messung</div>
-</div>
-<div class='zeile'>
-<div class='label'>teuerster Preis (13:00–23:59)</div>
-<div class='preis leer'>keine Messung</div>
-</div>
-<h4>Diesel</h4>
-<div class='zeile'>
-<div class='label'>erster günstigster Preis des Tages (07:00–08:00)</div>
-<div class='preis'>2,249 <span class='ab'>ab 07:20:08</span></div>
-<div class='stationen'>SEEL Asbach-Bäumenheim</div>
-</div>
-<div class='zeile'>
-<div class='label'>erster teuerster Preis des Tages (07:00–08:00)</div>
-<div class='preis'>2,349 <span class='ab'>ab 07:20:08</span></div>
-<div class='stationen'>Tankstelle Kuntze Bäumenheim</div>
-</div>
-<div class='zeile'>
-<div class='label'>günstigster Preis (11:00–11:59)</div>
-<div class='preis leer'>keine Messung</div>
-</div>
-<div class='zeile'>
-<div class='label'>teuerster Preis (11:00–11:59)</div>
-<div class='preis leer'>keine Messung</div>
-</div>
-<div class='zeile'>
-<div class='label'>günstigster Preis (13:00–23:59)</div>
-<div class='preis leer'>keine Messung</div>
-</div>
-<div class='zeile'>
-<div class='label'>teuerster Preis (13:00–23:59)</div>
-<div class='preis leer'>keine Messung</div>
-</div>
-</article><article class='kachel auswertung'>
-<h2>Tagesauswertung 08:20:10</h2>
-<h3>Möttingen</h3>
-<h4>E5</h4>
-<div class='zeile'>
-<div class='label'>erster günstigster Preis des Tages (07:00–08:00)</div>
-<div class='preis'>2,189 <span class='ab'>ab 07:20:08</span></div>
-<div class='stationen'>HEIM Möttingen<br>SEEL Möttingen</div>
-</div>
-<div class='zeile'>
-<div class='label'>erster teuerster Preis des Tages (07:00–08:00)</div>
-<div class='preis'>2,189 <span class='ab'>ab 07:20:08</span></div>
-<div class='stationen'>HEIM Möttingen<br>SEEL Möttingen</div>
-</div>
-<div class='zeile'>
-<div class='label'>günstigster Preis (11:00–11:59)</div>
-<div class='preis leer'>keine Messung</div>
-</div>
-<div class='zeile'>
-<div class='label'>teuerster Preis (11:00–11:59)</div>
-<div class='preis leer'>keine Messung</div>
-</div>
-<div class='zeile'>
-<div class='label'>günstigster Preis (13:00–23:59)</div>
-<div class='preis leer'>keine Messung</div>
-</div>
-<div class='zeile'>
-<div class='label'>teuerster Preis (13:00–23:59)</div>
-<div class='preis leer'>keine Messung</div>
-</div>
-<h4>E10</h4>
-<div class='zeile'>
-<div class='label'>erster günstigster Preis des Tages (07:00–08:00)</div>
-<div class='preis'>2,129 <span class='ab'>ab 07:20:08</span></div>
-<div class='stationen'>HEIM Möttingen<br>SEEL Möttingen</div>
-</div>
-<div class='zeile'>
-<div class='label'>erster teuerster Preis des Tages (07:00–08:00)</div>
-<div class='preis'>2,129 <span class='ab'>ab 07:20:08</span></div>
-<div class='stationen'>HEIM Möttingen<br>SEEL Möttingen</div>
-</div>
-<div class='zeile'>
-<div class='label'>günstigster Preis (11:00–11:59)</div>
-<div class='preis leer'>keine Messung</div>
-</div>
-<div class='zeile'>
-<div class='label'>teuerster Preis (11:00–11:59)</div>
-<div class='preis leer'>keine Messung</div>
-</div>
-<div class='zeile'>
-<div class='label'>günstigster Preis (13:00–23:59)</div>
-<div class='preis leer'>keine Messung</div>
-</div>
-<div class='zeile'>
-<div class='label'>teuerster Preis (13:00–23:59)</div>
-<div class='preis leer'>keine Messung</div>
-</div>
-<h4>Diesel</h4>
-<div class='zeile'>
-<div class='label'>erster günstigster Preis des Tages (07:00–08:00)</div>
-<div class='preis'>2,249 <span class='ab'>ab 07:20:08</span></div>
-<div class='stationen'>HEIM Möttingen<br>SEEL Möttingen</div>
-</div>
-<div class='zeile'>
-<div class='label'>erster teuerster Preis des Tages (07:00–08:00)</div>
-<div class='preis'>2,249 <span class='ab'>ab 07:20:08</span></div>
-<div class='stationen'>HEIM Möttingen<br>SEEL Möttingen</div>
-</div>
-<div class='zeile'>
-<div class='label'>günstigster Preis (11:00–11:59)</div>
-<div class='preis leer'>keine Messung</div>
-</div>
-<div class='zeile'>
-<div class='label'>teuerster Preis (11:00–11:59)</div>
-<div class='preis leer'>keine Messung</div>
-</div>
-<div class='zeile'>
-<div class='label'>günstigster Preis (13:00–23:59)</div>
-<div class='preis leer'>keine Messung</div>
-</div>
-<div class='zeile'>
-<div class='label'>teuerster Preis (13:00–23:59)</div>
-<div class='preis leer'>keine Messung</div>
-</div>
-</article><article class='kachel auswertung'>
-<h2>Tagesauswertung 08:20:10</h2>
-<h3>Hamburg</h3>
-<h4>E5</h4>
-<div class='zeile'>
-<div class='label'>erster günstigster Preis des Tages (07:00–08:00)</div>
-<div class='preis leer'>keine Messung</div>
-</div>
-<div class='zeile'>
-<div class='label'>erster teuerster Preis des Tages (07:00–08:00)</div>
-<div class='preis leer'>keine Messung</div>
-</div>
-<div class='zeile'>
-<div class='label'>günstigster Preis (11:00–11:59)</div>
-<div class='preis leer'>keine Messung</div>
-</div>
-<div class='zeile'>
-<div class='label'>teuerster Preis (11:00–11:59)</div>
-<div class='preis leer'>keine Messung</div>
-</div>
-<div class='zeile'>
-<div class='label'>günstigster Preis (13:00–23:59)</div>
-<div class='preis leer'>keine Messung</div>
-</div>
-<div class='zeile'>
-<div class='label'>teuerster Preis (13:00–23:59)</div>
-<div class='preis leer'>keine Messung</div>
-</div>
-<h4>E10</h4>
-<div class='zeile'>
-<div class='label'>erster günstigster Preis des Tages (07:00–08:00)</div>
-<div class='preis leer'>keine Messung</div>
-</div>
-<div class='zeile'>
-<div class='label'>erster teuerster Preis des Tages (07:00–08:00)</div>
-<div class='preis leer'>keine Messung</div>
-</div>
-<div class='zeile'>
-<div class='label'>günstigster Preis (11:00–11:59)</div>
-<div class='preis leer'>keine Messung</div>
-</div>
-<div class='zeile'>
-<div class='label'>teuerster Preis (11:00–11:59)</div>
-<div class='preis leer'>keine Messung</div>
-</div>
-<div class='zeile'>
-<div class='label'>günstigster Preis (13:00–23:59)</div>
-<div class='preis leer'>keine Messung</div>
-</div>
-<div class='zeile'>
-<div class='label'>teuerster Preis (13:00–23:59)</div>
-<div class='preis leer'>keine Messung</div>
-</div>
-<h4>Diesel</h4>
-<div class='zeile'>
-<div class='label'>erster günstigster Preis des Tages (07:00–08:00)</div>
-<div class='preis leer'>keine Messung</div>
-</div>
-<div class='zeile'>
-<div class='label'>erster teuerster Preis des Tages (07:00–08:00)</div>
-<div class='preis leer'>keine Messung</div>
-</div>
-<div class='zeile'>
-<div class='label'>günstigster Preis (11:00–11:59)</div>
-<div class='preis leer'>keine Messung</div>
-</div>
-<div class='zeile'>
-<div class='label'>teuerster Preis (11:00–11:59)</div>
-<div class='preis leer'>keine Messung</div>
-</div>
-<div class='zeile'>
-<div class='label'>günstigster Preis (13:00–23:59)</div>
-<div class='preis leer'>keine Messung</div>
-</div>
-<div class='zeile'>
-<div class='label'>teuerster Preis (13:00–23:59)</div>
-<div class='preis leer'>keine Messung</div>
-</div>
-</article>
-</div>
 <p class="legende">Rot: Preis nach 12:59 Uhr höher als der letzte Preis dieser Tankstelle bis 12:59 Uhr.</p>
-<section class='ort-stationen'><h2>Donauwörth</h2><div class='station-grid'><article class='kachel station'><h3>AGIP ENI Donauwörth</h3><p class='adresse'>Bürgermeister-Hefele-Strasse 1</p><div class='messwerte'><table><tr><th>Zeit</th><th>E5</th><th>E10</th><th>Diesel</th></tr><tr><td>08:20:10</td><td>2,229</td><td>2,169</td><td>2,269</td></tr><tr><td>08:19:32</td><td>2,229</td><td>2,169</td><td>2,269</td></tr><tr><td>08:12:18</td><td>2,229</td><td>2,169</td><td>2,269</td></tr><tr><td>07:20:08</td><td>2,239</td><td>2,179</td><td>2,269</td></tr></table></div></article><article class='kachel station'><h3>Bavaria Petrol Donauwörth</h3><p class='adresse'>Neurieder Weg 33</p><div class='messwerte'><table><tr><th>Zeit</th><th>E5</th><th>E10</th><th>Diesel</th></tr><tr><td>08:20:10</td><td>2,219</td><td>2,159</td><td>2,249</td></tr><tr><td>08:19:32</td><td>2,219</td><td>2,159</td><td>2,249</td></tr><tr><td>08:12:18</td><td>2,219</td><td>2,159</td><td>2,249</td></tr><tr><td>07:20:08</td><td>2,229</td><td>2,169</td><td>2,249</td></tr></table></div></article><article class='kachel station'><h3>Esso Dillinger Straße</h3><p class='adresse'>DILLINGER STR. 25</p><div class='messwerte'><table><tr><th>Zeit</th><th>E5</th><th>E10</th><th>Diesel</th></tr><tr><td>08:20:10</td><td>2,229</td><td>2,169</td><td>2,259</td></tr><tr><td>08:19:32</td><td>2,229</td><td>2,169</td><td>2,259</td></tr><tr><td>08:12:18</td><td>2,239</td><td>2,179</td><td>2,259</td></tr><tr><td>07:20:08</td><td>2,239</td><td>2,179</td><td>2,259</td></tr></table></div></article><article class='kachel station'><h3>Esso Nürnberger Straße</h3><p class='adresse'>Nürnberger Str. 10</p><div class='messwerte'><table><tr><th>Zeit</th><th>E5</th><th>E10</th><th>Diesel</th></tr><tr><td>08:20:10</td><td>2,239</td><td>2,179</td><td>2,259</td></tr><tr><td>08:19:32</td><td>2,239</td><td>2,179</td><td>2,259</td></tr><tr><td>08:12:18</td><td>2,239</td><td>2,179</td><td>2,259</td></tr><tr><td>07:20:08</td><td>2,239</td><td>2,179</td><td>2,259</td></tr></table></div></article><article class='kachel station'><h3>Tankstelle Oberholzner</h3><p class='adresse'>Sternschanzenstraße 17</p><div class='messwerte'><table><tr><th>Zeit</th><th>E5</th><th>E10</th><th>Diesel</th></tr><tr><td>08:20:10</td><td>2,099</td><td>2,069</td><td>2,249</td></tr><tr><td>08:19:32</td><td>2,099</td><td>2,069</td><td>2,249</td></tr><tr><td>08:12:18</td><td>2,099</td><td>2,069</td><td>2,249</td></tr><tr><td>07:20:08</td><td>2,099</td><td>2,069</td><td>2,249</td></tr></table></div></article><article class='kachel station'><h3>TotalEnergies Donauwörth</h3><p class='adresse'>Augsburger Str. 16</p><div class='messwerte'><table><tr><th>Zeit</th><th>E5</th><th>E10</th><th>Diesel</th></tr><tr><td>08:20:10</td><td>2,229</td><td>2,169</td><td>2,259</td></tr><tr><td>08:19:32</td><td>2,229</td><td>2,169</td><td>2,259</td></tr><tr><td>08:12:18</td><td>2,229</td><td>2,169</td><td>2,259</td></tr><tr><td>07:20:08</td><td>2,239</td><td>2,179</td><td>2,259</td></tr></table></div></article></div></section><section class='ort-stationen'><h2>Bäumenheim</h2><div class='station-grid'><article class='kachel station'><h3>SEEL Asbach-Bäumenheim</h3><p class='adresse'>Donauwörther Str. 29</p><div class='messwerte'><table><tr><th>Zeit</th><th>E5</th><th>E10</th><th>Diesel</th></tr><tr><td>08:20:10</td><td>2,189</td><td>2,149</td><td>2,249</td></tr><tr><td>08:19:32</td><td>2,189</td><td>2,149</td><td>2,249</td></tr><tr><td>08:12:18</td><td>2,189</td><td>2,149</td><td>2,249</td></tr><tr><td>07:20:08</td><td>2,189</td><td>2,149</td><td>2,249</td></tr></table></div></article><article class='kachel station'><h3>Tankstelle Kuntze Bäumenheim</h3><p class='adresse'>Raiffeisen Str. 2</p><div class='messwerte'><table><tr><th>Zeit</th><th>E5</th><th>E10</th><th>Diesel</th></tr><tr><td>08:20:10</td><td>2,199</td><td>2,139</td><td>2,349</td></tr><tr><td>08:19:32</td><td>2,199</td><td>2,139</td><td>2,349</td></tr><tr><td>08:12:18</td><td>2,199</td><td>2,139</td><td>2,349</td></tr><tr><td>07:20:08</td><td>2,199</td><td>2,139</td><td>2,349</td></tr></table></div></article></div></section><section class='ort-stationen'><h2>Möttingen</h2><div class='station-grid'><article class='kachel station'><h3>HEIM Möttingen</h3><p class='adresse'>Romantische Str. 14</p><div class='messwerte'><table><tr><th>Zeit</th><th>E5</th><th>E10</th><th>Diesel</th></tr><tr><td>08:20:10</td><td>2,179</td><td>2,119</td><td>2,249</td></tr><tr><td>08:19:32</td><td>2,179</td><td>2,119</td><td>2,249</td></tr><tr><td>08:12:18</td><td>2,189</td><td>2,129</td><td>2,249</td></tr><tr><td>07:20:08</td><td>2,189</td><td>2,129</td><td>2,249</td></tr></table></div></article><article class='kachel station'><h3>SEEL Möttingen</h3><p class='adresse'>Romantische Str. 24</p><div class='messwerte'><table><tr><th>Zeit</th><th>E5</th><th>E10</th><th>Diesel</th></tr><tr><td>08:20:10</td><td>2,179</td><td>2,119</td><td>2,249</td></tr><tr><td>08:19:32</td><td>2,179</td><td>2,119</td><td>2,249</td></tr><tr><td>08:12:18</td><td>2,189</td><td>2,129</td><td>2,249</td></tr><tr><td>07:20:08</td><td>2,189</td><td>2,129</td><td>2,249</td></tr></table></div></article></div></section><section class='ort-stationen'><h2>Hamburg</h2><div class='station-grid'><article class='kachel station'><h3>Aral Bundesstraße</h3><p class='adresse'>Bundesstraße 38</p><div class='messwerte'><table><tr><th>Zeit</th><th>E5</th><th>E10</th><th>Diesel</th></tr><tr><td>08:20:10</td><td>2,169</td><td>–</td><td>2,199</td></tr><tr><td>08:19:32</td><td>2,169</td><td>–</td><td>2,199</td></tr></table></div></article><article class='kachel station'><h3>Aral Hoheluftchaussee</h3><p class='adresse'>Hoheluftchaussee 78</p><div class='messwerte'><table><tr><th>Zeit</th><th>E5</th><th>E10</th><th>Diesel</th></tr><tr><td>08:20:10</td><td>2,169</td><td>2,109</td><td>2,189</td></tr><tr><td>08:19:32</td><td>2,169</td><td>2,109</td><td>2,189</td></tr></table></div></article><article class='kachel station'><h3>Aral Kieler Straße 285</h3><p class='adresse'>Kieler Straße 285</p><div class='messwerte'><table><tr><th>Zeit</th><th>E5</th><th>E10</th><th>Diesel</th></tr><tr><td>08:20:10</td><td>2,179</td><td>2,119</td><td>2,199</td></tr><tr><td>08:19:32</td><td>2,179</td><td>2,119</td><td>2,199</td></tr></table></div></article><article class='kachel station'><h3>Aral Kieler Straße 314</h3><p class='adresse'>Kieler Straße 314</p><div class='messwerte'><table><tr><th>Zeit</th><th>E5</th><th>E10</th><th>Diesel</th></tr><tr><td>08:20:10</td><td>2,179</td><td>2,119</td><td>2,199</td></tr><tr><td>08:19:32</td><td>2,179</td><td>2,119</td><td>2,199</td></tr></table></div></article><article class='kachel station'><h3>Aral Königstraße</h3><p class='adresse'>Königstraße 9</p><div class='messwerte'><table><tr><th>Zeit</th><th>E5</th><th>E10</th><th>Diesel</th></tr><tr><td>08:20:10</td><td>2,139</td><td>2,079</td><td>2,169</td></tr><tr><td>08:19:32</td><td>2,139</td><td>2,079</td><td>2,169</td></tr></table></div></article><article class='kachel station'><h3>Aral Stresemannstraße 329</h3><p class='adresse'>Stresemannstraße 329</p><div class='messwerte'><table><tr><th>Zeit</th><th>E5</th><th>E10</th><th>Diesel</th></tr><tr><td>08:20:10</td><td>2,179</td><td>2,119</td><td>2,199</td></tr><tr><td>08:19:32</td><td>2,179</td><td>2,119</td><td>2,199</td></tr></table></div></article><article class='kachel station'><h3>CleanCar Kieler Str.</h3><p class='adresse'>Kieler Str. 195</p><div class='messwerte'><table><tr><th>Zeit</th><th>E5</th><th>E10</th><th>Diesel</th></tr><tr><td>08:20:10</td><td>2,139</td><td>2,079</td><td>2,169</td></tr><tr><td>08:19:32</td><td>2,139</td><td>2,079</td><td>2,169</td></tr></table></div></article><article class='kachel station'><h3>HEM Kieler Str.</h3><p class='adresse'>Kieler Str. 361-365</p><div class='messwerte'><table><tr><th>Zeit</th><th>E5</th><th>E10</th><th>Diesel</th></tr><tr><td>08:20:10</td><td>2,139</td><td>2,079</td><td>2,169</td></tr><tr><td>08:19:32</td><td>2,139</td><td>2,079</td><td>2,169</td></tr></table></div></article><article class='kachel station'><h3>JET Kieler Str. 234</h3><p class='adresse'>Kieler Str. 234</p><div class='messwerte'><table><tr><th>Zeit</th><th>E5</th><th>E10</th><th>Diesel</th></tr><tr><td>08:20:10</td><td>2,139</td><td>2,079</td><td>2,169</td></tr><tr><td>08:19:32</td><td>2,139</td><td>2,079</td><td>2,169</td></tr></table></div></article><article class='kachel station'><h3>JET Neuer Kamp</h3><p class='adresse'>Neuer Kamp 31</p><div class='messwerte'><table><tr><th>Zeit</th><th>E5</th><th>E10</th><th>Diesel</th></tr><tr><td>08:20:10</td><td>2,139</td><td>2,079</td><td>2,169</td></tr><tr><td>08:19:32</td><td>2,139</td><td>2,079</td><td>2,169</td></tr></table></div></article><article class='kachel station'><h3>Mr. Wash Stresemannstraße</h3><p class='adresse'>Stresemannstraße 349-351</p><div class='messwerte'><table><tr><th>Zeit</th><th>E5</th><th>E10</th><th>Diesel</th></tr><tr><td>08:20:10</td><td>–</td><td>–</td><td>–</td></tr><tr><td>08:19:32</td><td>–</td><td>–</td><td>–</td></tr></table></div></article><article class='kachel station'><h3>Sb Kohlentwiete</h3><p class='adresse'>Kohlentwiete 14</p><div class='messwerte'><table><tr><th>Zeit</th><th>E5</th><th>E10</th><th>Diesel</th></tr><tr><td>08:20:10</td><td>2,159</td><td>2,099</td><td>2,179</td></tr><tr><td>08:19:32</td><td>2,159</td><td>2,099</td><td>2,179</td></tr></table></div></article><article class='kachel station'><h3>Shell Bundesstr.</h3><p class='adresse'>Bundesstr. 66</p><div class='messwerte'><table><tr><th>Zeit</th><th>E5</th><th>E10</th><th>Diesel</th></tr><tr><td>08:20:10</td><td>2,149</td><td>2,089</td><td>2,179</td></tr><tr><td>08:19:32</td><td>2,149</td><td>2,089</td><td>2,179</td></tr></table></div></article><article class='kachel station'><h3>Shell Doormannsweg</h3><p class='adresse'>Doormannsweg 45</p><div class='messwerte'><table><tr><th>Zeit</th><th>E5</th><th>E10</th><th>Diesel</th></tr><tr><td>08:20:10</td><td>2,149</td><td>2,089</td><td>2,179</td></tr><tr><td>08:19:32</td><td>2,149</td><td>2,089</td><td>2,179</td></tr></table></div></article><article class='kachel station'><h3>Shell Fruchtallee</h3><p class='adresse'>Fruchtallee 95</p><div class='messwerte'><table><tr><th>Zeit</th><th>E5</th><th>E10</th><th>Diesel</th></tr><tr><td>08:20:10</td><td>2,149</td><td>2,089</td><td>2,179</td></tr><tr><td>08:19:32</td><td>2,149</td><td>2,089</td><td>2,179</td></tr></table></div></article><article class='kachel station'><h3>Shell Königstr.</h3><p class='adresse'>Königstr. 22</p><div class='messwerte'><table><tr><th>Zeit</th><th>E5</th><th>E10</th><th>Diesel</th></tr><tr><td>08:20:10</td><td>2,139</td><td>2,079</td><td>2,169</td></tr><tr><td>08:19:32</td><td>2,139</td><td>2,079</td><td>2,169</td></tr></table></div></article><article class='kachel station'><h3>Shell Schnackenburgallee</h3><p class='adresse'>Schnackenburgallee 12</p><div class='messwerte'><table><tr><th>Zeit</th><th>E5</th><th>E10</th><th>Diesel</th></tr><tr><td>08:20:10</td><td>2,149</td><td>2,089</td><td>2,179</td></tr><tr><td>08:19:32</td><td>2,149</td><td>2,089</td><td>2,179</td></tr></table></div></article><article class='kachel station'><h3>star Kieler Straße</h3><p class='adresse'>Kieler Straße 206</p><div class='messwerte'><table><tr><th>Zeit</th><th>E5</th><th>E10</th><th>Diesel</th></tr><tr><td>08:20:10</td><td>2,139</td><td>2,079</td><td>2,169</td></tr><tr><td>08:19:32</td><td>2,139</td><td>2,079</td><td>2,169</td></tr></table></div></article></div></section>
+<section class='gruppe'><h2 class='gruppe-titel'>Nordschwaben</h2><h3 class='abschnitt klapp' onclick="toggleKlapp('nordschwaben-tag')"><span id='icon-nordschwaben-tag' class='icon open'>▶</span> Tagesauswertung 09:15:56</h3><div id='nordschwaben-tag' class='klapp-inhalt'><div class='ort-grid'><article class='kachel auswertung'><h3>Donauwörth</h3><table class='kraftstoff'><tr><th class='merkmal'></th><th>E5</th><th>E10</th><th>Diesel</th></tr><tr><th class='merkmal'>erster günstigster Preis des Tages (07:00–07:59)</th><td><div class='preis'>2,099 <span class='ab'>ab 07:20:08</span></div><div class='stationen'>Tankstelle Oberholzner</div></td><td><div class='preis'>2,069 <span class='ab'>ab 07:20:08</span></div><div class='stationen'>Tankstelle Oberholzner</div></td><td><div class='preis'>2,249 <span class='ab'>ab 07:20:08</span></div><div class='stationen'>Bavaria Petrol Donauwörth<br>Tankstelle Oberholzner</div></td></tr><tr><th class='merkmal'>erster teuerster Preis des Tages (07:00–07:59)</th><td><div class='preis'>2,239 <span class='ab'>ab 07:20:08</span></div><div class='stationen'>AGIP ENI Donauwörth<br>Esso Dillinger Straße<br>Esso Nürnberger Straße<br>TotalEnergies Donauwörth</div></td><td><div class='preis'>2,179 <span class='ab'>ab 07:20:08</span></div><div class='stationen'>AGIP ENI Donauwörth<br>Esso Dillinger Straße<br>Esso Nürnberger Straße<br>TotalEnergies Donauwörth</div></td><td><div class='preis'>2,269 <span class='ab'>ab 07:20:08</span></div><div class='stationen'>AGIP ENI Donauwörth</div></td></tr><tr><th class='merkmal'>günstigster Preis (08:00–11:59)</th><td><div class='preis'>2,099 <span class='ab'>ab 08:12:18</span></div><div class='stationen'>Tankstelle Oberholzner</div></td><td><div class='preis'>2,069 <span class='ab'>ab 08:12:18</span></div><div class='stationen'>Tankstelle Oberholzner</div></td><td><div class='preis'>2,249 <span class='ab'>ab 08:12:18</span></div><div class='stationen'>Bavaria Petrol Donauwörth<br>Tankstelle Oberholzner</div></td></tr><tr><th class='merkmal'>teuerster Preis (08:00–11:59)</th><td><div class='preis'>2,239 <span class='ab'>ab 08:12:18</span></div><div class='stationen'>Esso Dillinger Straße<br>Esso Nürnberger Straße</div></td><td><div class='preis'>2,179 <span class='ab'>ab 08:12:18</span></div><div class='stationen'>Esso Dillinger Straße<br>Esso Nürnberger Straße</div></td><td><div class='preis'>2,269 <span class='ab'>ab 08:12:18</span></div><div class='stationen'>AGIP ENI Donauwörth</div></td></tr><tr><th class='merkmal'>günstigster Preis (12:00–12:59)</th><td class='leer'>keine Messung</td><td class='leer'>keine Messung</td><td class='leer'>keine Messung</td></tr><tr><th class='merkmal'>teuerster Preis (12:00–12:59)</th><td class='leer'>keine Messung</td><td class='leer'>keine Messung</td><td class='leer'>keine Messung</td></tr><tr><th class='merkmal'>günstigster Preis (13:00–23:59)</th><td class='leer'>keine Messung</td><td class='leer'>keine Messung</td><td class='leer'>keine Messung</td></tr><tr><th class='merkmal'>teuerster Preis (13:00–23:59)</th><td class='leer'>keine Messung</td><td class='leer'>keine Messung</td><td class='leer'>keine Messung</td></tr></table></article><article class='kachel auswertung'><h3>Bäumenheim</h3><table class='kraftstoff'><tr><th class='merkmal'></th><th>E5</th><th>E10</th><th>Diesel</th></tr><tr><th class='merkmal'>erster günstigster Preis des Tages (07:00–07:59)</th><td><div class='preis'>2,189 <span class='ab'>ab 07:20:08</span></div><div class='stationen'>SEEL Asbach-Bäumenheim</div></td><td><div class='preis'>2,139 <span class='ab'>ab 07:20:08</span></div><div class='stationen'>Tankstelle Kuntze Bäumenheim</div></td><td><div class='preis'>2,249 <span class='ab'>ab 07:20:08</span></div><div class='stationen'>SEEL Asbach-Bäumenheim</div></td></tr><tr><th class='merkmal'>erster teuerster Preis des Tages (07:00–07:59)</th><td><div class='preis'>2,199 <span class='ab'>ab 07:20:08</span></div><div class='stationen'>Tankstelle Kuntze Bäumenheim</div></td><td><div class='preis'>2,149 <span class='ab'>ab 07:20:08</span></div><div class='stationen'>SEEL Asbach-Bäumenheim</div></td><td><div class='preis'>2,349 <span class='ab'>ab 07:20:08</span></div><div class='stationen'>Tankstelle Kuntze Bäumenheim</div></td></tr><tr><th class='merkmal'>günstigster Preis (08:00–11:59)</th><td><div class='preis'>2,189 <span class='ab'>ab 08:12:18</span></div><div class='stationen'>SEEL Asbach-Bäumenheim</div></td><td><div class='preis'>2,139 <span class='ab'>ab 08:12:18</span></div><div class='stationen'>Tankstelle Kuntze Bäumenheim</div></td><td><div class='preis'>2,249 <span class='ab'>ab 08:12:18</span></div><div class='stationen'>SEEL Asbach-Bäumenheim</div></td></tr><tr><th class='merkmal'>teuerster Preis (08:00–11:59)</th><td><div class='preis'>2,199 <span class='ab'>ab 08:12:18</span></div><div class='stationen'>Tankstelle Kuntze Bäumenheim</div></td><td><div class='preis'>2,149 <span class='ab'>ab 08:12:18</span></div><div class='stationen'>SEEL Asbach-Bäumenheim</div></td><td><div class='preis'>2,349 <span class='ab'>ab 08:12:18</span></div><div class='stationen'>Tankstelle Kuntze Bäumenheim</div></td></tr><tr><th class='merkmal'>günstigster Preis (12:00–12:59)</th><td class='leer'>keine Messung</td><td class='leer'>keine Messung</td><td class='leer'>keine Messung</td></tr><tr><th class='merkmal'>teuerster Preis (12:00–12:59)</th><td class='leer'>keine Messung</td><td class='leer'>keine Messung</td><td class='leer'>keine Messung</td></tr><tr><th class='merkmal'>günstigster Preis (13:00–23:59)</th><td class='leer'>keine Messung</td><td class='leer'>keine Messung</td><td class='leer'>keine Messung</td></tr><tr><th class='merkmal'>teuerster Preis (13:00–23:59)</th><td class='leer'>keine Messung</td><td class='leer'>keine Messung</td><td class='leer'>keine Messung</td></tr></table></article><article class='kachel auswertung'><h3>Möttingen</h3><table class='kraftstoff'><tr><th class='merkmal'></th><th>E5</th><th>E10</th><th>Diesel</th></tr><tr><th class='merkmal'>erster günstigster Preis des Tages (07:00–07:59)</th><td><div class='preis'>2,189 <span class='ab'>ab 07:20:08</span></div><div class='stationen'>HEIM Möttingen<br>SEEL Möttingen</div></td><td><div class='preis'>2,129 <span class='ab'>ab 07:20:08</span></div><div class='stationen'>HEIM Möttingen<br>SEEL Möttingen</div></td><td><div class='preis'>2,249 <span class='ab'>ab 07:20:08</span></div><div class='stationen'>HEIM Möttingen<br>SEEL Möttingen</div></td></tr><tr><th class='merkmal'>erster teuerster Preis des Tages (07:00–07:59)</th><td><div class='preis'>2,189 <span class='ab'>ab 07:20:08</span></div><div class='stationen'>HEIM Möttingen<br>SEEL Möttingen</div></td><td><div class='preis'>2,129 <span class='ab'>ab 07:20:08</span></div><div class='stationen'>HEIM Möttingen<br>SEEL Möttingen</div></td><td><div class='preis'>2,249 <span class='ab'>ab 07:20:08</span></div><div class='stationen'>HEIM Möttingen<br>SEEL Möttingen</div></td></tr><tr><th class='merkmal'>günstigster Preis (08:00–11:59)</th><td><div class='preis'>2,179 <span class='ab'>ab 08:19:32</span></div><div class='stationen'>HEIM Möttingen<br>SEEL Möttingen</div></td><td><div class='preis'>2,119 <span class='ab'>ab 08:19:32</span></div><div class='stationen'>HEIM Möttingen<br>SEEL Möttingen</div></td><td><div class='preis'>2,249 <span class='ab'>ab 08:12:18</span></div><div class='stationen'>HEIM Möttingen<br>SEEL Möttingen</div></td></tr><tr><th class='merkmal'>teuerster Preis (08:00–11:59)</th><td><div class='preis'>2,189 <span class='ab'>ab 08:12:18</span></div><div class='stationen'>HEIM Möttingen<br>SEEL Möttingen</div></td><td><div class='preis'>2,129 <span class='ab'>ab 08:12:18</span></div><div class='stationen'>HEIM Möttingen<br>SEEL Möttingen</div></td><td><div class='preis'>2,249 <span class='ab'>ab 08:12:18</span></div><div class='stationen'>HEIM Möttingen<br>SEEL Möttingen</div></td></tr><tr><th class='merkmal'>günstigster Preis (12:00–12:59)</th><td class='leer'>keine Messung</td><td class='leer'>keine Messung</td><td class='leer'>keine Messung</td></tr><tr><th class='merkmal'>teuerster Preis (12:00–12:59)</th><td class='leer'>keine Messung</td><td class='leer'>keine Messung</td><td class='leer'>keine Messung</td></tr><tr><th class='merkmal'>günstigster Preis (13:00–23:59)</th><td class='leer'>keine Messung</td><td class='leer'>keine Messung</td><td class='leer'>keine Messung</td></tr><tr><th class='merkmal'>teuerster Preis (13:00–23:59)</th><td class='leer'>keine Messung</td><td class='leer'>keine Messung</td><td class='leer'>keine Messung</td></tr></table></article></div></div><h3 class='abschnitt klapp' onclick="toggleKlapp('nordschwaben-tank')"><span id='icon-nordschwaben-tank' class='icon'>▶</span> Nordschwaben</h3><div id='nordschwaben-tank' class='klapp-inhalt hidden'><h3 class='ort-titel'>Donauwörth</h3><div class='station-grid'><article class='kachel station'><h3>AGIP ENI Donauwörth</h3><p class='adresse'>Bürgermeister-Hefele-Strasse 1</p><div class='messwerte'><table><tr><th>Zeit</th><th>E5</th><th>E10</th><th>Diesel</th></tr><tr><td>09:15:56</td><td>2,229</td><td>2,169</td><td>2,259</td></tr><tr><td>08:20:10</td><td>2,229</td><td>2,169</td><td>2,269</td></tr><tr><td>08:19:32</td><td>2,229</td><td>2,169</td><td>2,269</td></tr><tr><td>08:12:18</td><td>2,229</td><td>2,169</td><td>2,269</td></tr><tr><td>07:20:08</td><td>2,239</td><td>2,179</td><td>2,269</td></tr></table></div></article><article class='kachel station'><h3>Bavaria Petrol Donauwörth</h3><p class='adresse'>Neurieder Weg 33</p><div class='messwerte'><table><tr><th>Zeit</th><th>E5</th><th>E10</th><th>Diesel</th></tr><tr><td>09:15:56</td><td>2,219</td><td>2,159</td><td>2,249</td></tr><tr><td>08:20:10</td><td>2,219</td><td>2,159</td><td>2,249</td></tr><tr><td>08:19:32</td><td>2,219</td><td>2,159</td><td>2,249</td></tr><tr><td>08:12:18</td><td>2,219</td><td>2,159</td><td>2,249</td></tr><tr><td>07:20:08</td><td>2,229</td><td>2,169</td><td>2,249</td></tr></table></div></article><article class='kachel station'><h3>Esso Dillinger Straße</h3><p class='adresse'>DILLINGER STR. 25</p><div class='messwerte'><table><tr><th>Zeit</th><th>E5</th><th>E10</th><th>Diesel</th></tr><tr><td>09:15:56</td><td>2,229</td><td>2,169</td><td>2,259</td></tr><tr><td>08:20:10</td><td>2,229</td><td>2,169</td><td>2,259</td></tr><tr><td>08:19:32</td><td>2,229</td><td>2,169</td><td>2,259</td></tr><tr><td>08:12:18</td><td>2,239</td><td>2,179</td><td>2,259</td></tr><tr><td>07:20:08</td><td>2,239</td><td>2,179</td><td>2,259</td></tr></table></div></article><article class='kachel station'><h3>Esso Nürnberger Straße</h3><p class='adresse'>Nürnberger Str. 10</p><div class='messwerte'><table><tr><th>Zeit</th><th>E5</th><th>E10</th><th>Diesel</th></tr><tr><td>09:15:56</td><td>2,229</td><td>2,169</td><td>2,259</td></tr><tr><td>08:20:10</td><td>2,239</td><td>2,179</td><td>2,259</td></tr><tr><td>08:19:32</td><td>2,239</td><td>2,179</td><td>2,259</td></tr><tr><td>08:12:18</td><td>2,239</td><td>2,179</td><td>2,259</td></tr><tr><td>07:20:08</td><td>2,239</td><td>2,179</td><td>2,259</td></tr></table></div></article><article class='kachel station'><h3>Tankstelle Oberholzner</h3><p class='adresse'>Sternschanzenstraße 17</p><div class='messwerte'><table><tr><th>Zeit</th><th>E5</th><th>E10</th><th>Diesel</th></tr><tr><td>09:15:56</td><td>2,099</td><td>2,069</td><td>2,249</td></tr><tr><td>08:20:10</td><td>2,099</td><td>2,069</td><td>2,249</td></tr><tr><td>08:19:32</td><td>2,099</td><td>2,069</td><td>2,249</td></tr><tr><td>08:12:18</td><td>2,099</td><td>2,069</td><td>2,249</td></tr><tr><td>07:20:08</td><td>2,099</td><td>2,069</td><td>2,249</td></tr></table></div></article><article class='kachel station'><h3>TotalEnergies Donauwörth</h3><p class='adresse'>Augsburger Str. 16</p><div class='messwerte'><table><tr><th>Zeit</th><th>E5</th><th>E10</th><th>Diesel</th></tr><tr><td>09:15:56</td><td>2,229</td><td>2,169</td><td>2,259</td></tr><tr><td>08:20:10</td><td>2,229</td><td>2,169</td><td>2,259</td></tr><tr><td>08:19:32</td><td>2,229</td><td>2,169</td><td>2,259</td></tr><tr><td>08:12:18</td><td>2,229</td><td>2,169</td><td>2,259</td></tr><tr><td>07:20:08</td><td>2,239</td><td>2,179</td><td>2,259</td></tr></table></div></article></div><h3 class='ort-titel'>Bäumenheim</h3><div class='station-grid'><article class='kachel station'><h3>SEEL Asbach-Bäumenheim</h3><p class='adresse'>Donauwörther Str. 29</p><div class='messwerte'><table><tr><th>Zeit</th><th>E5</th><th>E10</th><th>Diesel</th></tr><tr><td>09:15:56</td><td>2,189</td><td>2,149</td><td>2,249</td></tr><tr><td>08:20:10</td><td>2,189</td><td>2,149</td><td>2,249</td></tr><tr><td>08:19:32</td><td>2,189</td><td>2,149</td><td>2,249</td></tr><tr><td>08:12:18</td><td>2,189</td><td>2,149</td><td>2,249</td></tr><tr><td>07:20:08</td><td>2,189</td><td>2,149</td><td>2,249</td></tr></table></div></article><article class='kachel station'><h3>Tankstelle Kuntze Bäumenheim</h3><p class='adresse'>Raiffeisen Str. 2</p><div class='messwerte'><table><tr><th>Zeit</th><th>E5</th><th>E10</th><th>Diesel</th></tr><tr><td>09:15:56</td><td>2,199</td><td>2,139</td><td>2,349</td></tr><tr><td>08:20:10</td><td>2,199</td><td>2,139</td><td>2,349</td></tr><tr><td>08:19:32</td><td>2,199</td><td>2,139</td><td>2,349</td></tr><tr><td>08:12:18</td><td>2,199</td><td>2,139</td><td>2,349</td></tr><tr><td>07:20:08</td><td>2,199</td><td>2,139</td><td>2,349</td></tr></table></div></article></div><h3 class='ort-titel'>Möttingen</h3><div class='station-grid'><article class='kachel station'><h3>HEIM Möttingen</h3><p class='adresse'>Romantische Str. 14</p><div class='messwerte'><table><tr><th>Zeit</th><th>E5</th><th>E10</th><th>Diesel</th></tr><tr><td>09:15:56</td><td>2,179</td><td>2,119</td><td>2,249</td></tr><tr><td>08:20:10</td><td>2,179</td><td>2,119</td><td>2,249</td></tr><tr><td>08:19:32</td><td>2,179</td><td>2,119</td><td>2,249</td></tr><tr><td>08:12:18</td><td>2,189</td><td>2,129</td><td>2,249</td></tr><tr><td>07:20:08</td><td>2,189</td><td>2,129</td><td>2,249</td></tr></table></div></article><article class='kachel station'><h3>SEEL Möttingen</h3><p class='adresse'>Romantische Str. 24</p><div class='messwerte'><table><tr><th>Zeit</th><th>E5</th><th>E10</th><th>Diesel</th></tr><tr><td>09:15:56</td><td>2,179</td><td>2,119</td><td>2,249</td></tr><tr><td>08:20:10</td><td>2,179</td><td>2,119</td><td>2,249</td></tr><tr><td>08:19:32</td><td>2,179</td><td>2,119</td><td>2,249</td></tr><tr><td>08:12:18</td><td>2,189</td><td>2,129</td><td>2,249</td></tr><tr><td>07:20:08</td><td>2,189</td><td>2,129</td><td>2,249</td></tr></table></div></article></div></div></section><section class='gruppe'><h2 class='gruppe-titel'>Hamburg</h2><h3 class='abschnitt klapp' onclick="toggleKlapp('hamburg-tag')"><span id='icon-hamburg-tag' class='icon'>▶</span> Tagesauswertung 09:15:56</h3><div id='hamburg-tag' class='klapp-inhalt hidden'><div class='ort-grid'><article class='kachel auswertung'><h3>Hamburg</h3><table class='kraftstoff'><tr><th class='merkmal'></th><th>E5</th><th>E10</th><th>Diesel</th></tr><tr><th class='merkmal'>erster günstigster Preis des Tages (07:00–07:59)</th><td class='leer'>keine Messung</td><td class='leer'>keine Messung</td><td class='leer'>keine Messung</td></tr><tr><th class='merkmal'>erster teuerster Preis des Tages (07:00–07:59)</th><td class='leer'>keine Messung</td><td class='leer'>keine Messung</td><td class='leer'>keine Messung</td></tr><tr><th class='merkmal'>günstigster Preis (08:00–11:59)</th><td><div class='preis'>2,129 <span class='ab'>ab 09:15:56</span></div><div class='stationen'>CleanCar Kieler Str.<br>JET Neuer Kamp<br>Mr. Wash Stresemannstraße</div></td><td><div class='preis'>2,069 <span class='ab'>ab 09:15:56</span></div><div class='stationen'>CleanCar Kieler Str.<br>JET Neuer Kamp<br>Mr. Wash Stresemannstraße</div></td><td><div class='preis'>2,149 <span class='ab'>ab 09:15:56</span></div><div class='stationen'>Mr. Wash Stresemannstraße</div></td></tr><tr><th class='merkmal'>teuerster Preis (08:00–11:59)</th><td><div class='preis'>2,179 <span class='ab'>ab 08:19:32</span></div><div class='stationen'>Aral Kieler Straße 285<br>Aral Kieler Straße 314<br>Aral Stresemannstraße 329</div></td><td><div class='preis'>2,119 <span class='ab'>ab 08:19:32</span></div><div class='stationen'>Aral Kieler Straße 285<br>Aral Kieler Straße 314<br>Aral Stresemannstraße 329</div></td><td><div class='preis'>2,199 <span class='ab'>ab 08:19:32</span></div><div class='stationen'>Aral Bundesstraße<br>Aral Kieler Straße 285<br>Aral Kieler Straße 314<br>Aral Stresemannstraße 329</div></td></tr><tr><th class='merkmal'>günstigster Preis (12:00–12:59)</th><td class='leer'>keine Messung</td><td class='leer'>keine Messung</td><td class='leer'>keine Messung</td></tr><tr><th class='merkmal'>teuerster Preis (12:00–12:59)</th><td class='leer'>keine Messung</td><td class='leer'>keine Messung</td><td class='leer'>keine Messung</td></tr><tr><th class='merkmal'>günstigster Preis (13:00–23:59)</th><td class='leer'>keine Messung</td><td class='leer'>keine Messung</td><td class='leer'>keine Messung</td></tr><tr><th class='merkmal'>teuerster Preis (13:00–23:59)</th><td class='leer'>keine Messung</td><td class='leer'>keine Messung</td><td class='leer'>keine Messung</td></tr></table></article></div></div><h3 class='abschnitt klapp' onclick="toggleKlapp('hamburg-tank')"><span id='icon-hamburg-tank' class='icon'>▶</span> Hamburg-Altona</h3><div id='hamburg-tank' class='klapp-inhalt hidden'><div class='station-grid'><article class='kachel station'><h3>Aral Bundesstraße</h3><p class='adresse'>Bundesstraße 38</p><div class='messwerte'><table><tr><th>Zeit</th><th>E5</th><th>E10</th><th>Diesel</th></tr><tr><td>09:15:56</td><td>2,149</td><td>–</td><td>2,179</td></tr><tr><td>08:20:10</td><td>2,169</td><td>–</td><td>2,199</td></tr><tr><td>08:19:32</td><td>2,169</td><td>–</td><td>2,199</td></tr></table></div></article><article class='kachel station'><h3>Aral Hoheluftchaussee</h3><p class='adresse'>Hoheluftchaussee 78</p><div class='messwerte'><table><tr><th>Zeit</th><th>E5</th><th>E10</th><th>Diesel</th></tr><tr><td>09:15:56</td><td>2,139</td><td>2,079</td><td>2,179</td></tr><tr><td>08:20:10</td><td>2,169</td><td>2,109</td><td>2,189</td></tr><tr><td>08:19:32</td><td>2,169</td><td>2,109</td><td>2,189</td></tr></table></div></article><article class='kachel station'><h3>Aral Kieler Straße 285</h3><p class='adresse'>Kieler Straße 285</p><div class='messwerte'><table><tr><th>Zeit</th><th>E5</th><th>E10</th><th>Diesel</th></tr><tr><td>09:15:56</td><td>2,149</td><td>2,089</td><td>2,179</td></tr><tr><td>08:20:10</td><td>2,179</td><td>2,119</td><td>2,199</td></tr><tr><td>08:19:32</td><td>2,179</td><td>2,119</td><td>2,199</td></tr></table></div></article><article class='kachel station'><h3>Aral Kieler Straße 314</h3><p class='adresse'>Kieler Straße 314</p><div class='messwerte'><table><tr><th>Zeit</th><th>E5</th><th>E10</th><th>Diesel</th></tr><tr><td>09:15:56</td><td>2,149</td><td>2,089</td><td>2,179</td></tr><tr><td>08:20:10</td><td>2,179</td><td>2,119</td><td>2,199</td></tr><tr><td>08:19:32</td><td>2,179</td><td>2,119</td><td>2,199</td></tr></table></div></article><article class='kachel station'><h3>Aral Königstraße</h3><p class='adresse'>Königstraße 9</p><div class='messwerte'><table><tr><th>Zeit</th><th>E5</th><th>E10</th><th>Diesel</th></tr><tr><td>09:15:56</td><td>2,139</td><td>2,079</td><td>2,169</td></tr><tr><td>08:20:10</td><td>2,139</td><td>2,079</td><td>2,169</td></tr><tr><td>08:19:32</td><td>2,139</td><td>2,079</td><td>2,169</td></tr></table></div></article><article class='kachel station'><h3>Aral Stresemannstraße 329</h3><p class='adresse'>Stresemannstraße 329</p><div class='messwerte'><table><tr><th>Zeit</th><th>E5</th><th>E10</th><th>Diesel</th></tr><tr><td>09:15:56</td><td>2,149</td><td>2,089</td><td>2,179</td></tr><tr><td>08:20:10</td><td>2,179</td><td>2,119</td><td>2,199</td></tr><tr><td>08:19:32</td><td>2,179</td><td>2,119</td><td>2,199</td></tr></table></div></article><article class='kachel station'><h3>CleanCar Kieler Str.</h3><p class='adresse'>Kieler Str. 195</p><div class='messwerte'><table><tr><th>Zeit</th><th>E5</th><th>E10</th><th>Diesel</th></tr><tr><td>09:15:56</td><td>2,129</td><td>2,069</td><td>2,159</td></tr><tr><td>08:20:10</td><td>2,139</td><td>2,079</td><td>2,169</td></tr><tr><td>08:19:32</td><td>2,139</td><td>2,079</td><td>2,169</td></tr></table></div></article><article class='kachel station'><h3>HEM Kieler Str.</h3><p class='adresse'>Kieler Str. 361-365</p><div class='messwerte'><table><tr><th>Zeit</th><th>E5</th><th>E10</th><th>Diesel</th></tr><tr><td>09:15:56</td><td>2,139</td><td>2,079</td><td>2,169</td></tr><tr><td>08:20:10</td><td>2,139</td><td>2,079</td><td>2,169</td></tr><tr><td>08:19:32</td><td>2,139</td><td>2,079</td><td>2,169</td></tr></table></div></article><article class='kachel station'><h3>JET Kieler Str. 234</h3><p class='adresse'>Kieler Str. 234</p><div class='messwerte'><table><tr><th>Zeit</th><th>E5</th><th>E10</th><th>Diesel</th></tr><tr><td>09:15:56</td><td>2,139</td><td>2,079</td><td>2,169</td></tr><tr><td>08:20:10</td><td>2,139</td><td>2,079</td><td>2,169</td></tr><tr><td>08:19:32</td><td>2,139</td><td>2,079</td><td>2,169</td></tr></table></div></article><article class='kachel station'><h3>JET Neuer Kamp</h3><p class='adresse'>Neuer Kamp 31</p><div class='messwerte'><table><tr><th>Zeit</th><th>E5</th><th>E10</th><th>Diesel</th></tr><tr><td>09:15:56</td><td>2,129</td><td>2,069</td><td>2,159</td></tr><tr><td>08:20:10</td><td>2,139</td><td>2,079</td><td>2,169</td></tr><tr><td>08:19:32</td><td>2,139</td><td>2,079</td><td>2,169</td></tr></table></div></article><article class='kachel station'><h3>Mr. Wash Stresemannstraße</h3><p class='adresse'>Stresemannstraße 349-351</p><div class='messwerte'><table><tr><th>Zeit</th><th>E5</th><th>E10</th><th>Diesel</th></tr><tr><td>09:15:56</td><td>2,129</td><td>2,069</td><td>2,149</td></tr><tr><td>08:20:10</td><td>–</td><td>–</td><td>–</td></tr><tr><td>08:19:32</td><td>–</td><td>–</td><td>–</td></tr></table></div></article><article class='kachel station'><h3>Sb Kohlentwiete</h3><p class='adresse'>Kohlentwiete 14</p><div class='messwerte'><table><tr><th>Zeit</th><th>E5</th><th>E10</th><th>Diesel</th></tr><tr><td>09:15:56</td><td>2,139</td><td>2,079</td><td>2,169</td></tr><tr><td>08:20:10</td><td>2,159</td><td>2,099</td><td>2,179</td></tr><tr><td>08:19:32</td><td>2,159</td><td>2,099</td><td>2,179</td></tr></table></div></article><article class='kachel station'><h3>Shell Bundesstr.</h3><p class='adresse'>Bundesstr. 66</p><div class='messwerte'><table><tr><th>Zeit</th><th>E5</th><th>E10</th><th>Diesel</th></tr><tr><td>09:15:56</td><td>2,149</td><td>2,089</td><td>2,179</td></tr><tr><td>08:20:10</td><td>2,149</td><td>2,089</td><td>2,179</td></tr><tr><td>08:19:32</td><td>2,149</td><td>2,089</td><td>2,179</td></tr></table></div></article><article class='kachel station'><h3>Shell Doormannsweg</h3><p class='adresse'>Doormannsweg 45</p><div class='messwerte'><table><tr><th>Zeit</th><th>E5</th><th>E10</th><th>Diesel</th></tr><tr><td>09:15:56</td><td>2,149</td><td>2,089</td><td>2,179</td></tr><tr><td>08:20:10</td><td>2,149</td><td>2,089</td><td>2,179</td></tr><tr><td>08:19:32</td><td>2,149</td><td>2,089</td><td>2,179</td></tr></table></div></article><article class='kachel station'><h3>Shell Fruchtallee</h3><p class='adresse'>Fruchtallee 95</p><div class='messwerte'><table><tr><th>Zeit</th><th>E5</th><th>E10</th><th>Diesel</th></tr><tr><td>09:15:56</td><td>2,149</td><td>2,089</td><td>2,179</td></tr><tr><td>08:20:10</td><td>2,149</td><td>2,089</td><td>2,179</td></tr><tr><td>08:19:32</td><td>2,149</td><td>2,089</td><td>2,179</td></tr></table></div></article><article class='kachel station'><h3>Shell Königstr.</h3><p class='adresse'>Königstr. 22</p><div class='messwerte'><table><tr><th>Zeit</th><th>E5</th><th>E10</th><th>Diesel</th></tr><tr><td>09:15:56</td><td>2,139</td><td>2,079</td><td>2,159</td></tr><tr><td>08:20:10</td><td>2,139</td><td>2,079</td><td>2,169</td></tr><tr><td>08:19:32</td><td>2,139</td><td>2,079</td><td>2,169</td></tr></table></div></article><article class='kachel station'><h3>Shell Schnackenburgallee</h3><p class='adresse'>Schnackenburgallee 12</p><div class='messwerte'><table><tr><th>Zeit</th><th>E5</th><th>E10</th><th>Diesel</th></tr><tr><td>09:15:56</td><td>2,149</td><td>2,089</td><td>2,179</td></tr><tr><td>08:20:10</td><td>2,149</td><td>2,089</td><td>2,179</td></tr><tr><td>08:19:32</td><td>2,149</td><td>2,089</td><td>2,179</td></tr></table></div></article><article class='kachel station'><h3>star Kieler Straße</h3><p class='adresse'>Kieler Straße 206</p><div class='messwerte'><table><tr><th>Zeit</th><th>E5</th><th>E10</th><th>Diesel</th></tr><tr><td>09:15:56</td><td>2,139</td><td>2,079</td><td>2,169</td></tr><tr><td>08:20:10</td><td>2,139</td><td>2,079</td><td>2,169</td></tr><tr><td>08:19:32</td><td>2,139</td><td>2,079</td><td>2,169</td></tr></table></div></article></div></div></section>
 </body>
 </html>
