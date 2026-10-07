@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tagesauswertung 08:12:18</title>
+<style>
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+    background: #f3f5f7;
+    color: #1c1c1c;
+}
+a { color: #0b57d0; }
+h1 { margin-bottom: 4px; }
+.hinweis { color: #444; margin-top: 0; }
+.legende {
+    background: #ffd0d0;
+    display: inline-block;
+    padding: 6px 10px;
+    border-radius: 6px;
+    margin: 8px 0 22px;
+}
+.ort-grid, .station-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 14px;
+    align-items: start;
+}
+.kachel {
+    background: #fff;
+    border: 1px solid #d5dbe3;
+    border-radius: 10px;
+    padding: 12px 14px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+}
+.auswertung h2, .station h3, .ort-stationen h2 {
+    margin: 0 0 4px;
+}
+.auswertung h3 {
+    margin: 0 0 12px;
+    color: #0b57d0;
+}
+.auswertung h4 {
+    margin: 14px 0 6px;
+    padding-top: 8px;
+    border-top: 1px solid #e4e8ee;
+}
+.zeile { margin: 0 0 8px; }
+.zeile.illegal, tr.illegal td, td.illegal {
+    background: #ffc9c9;
+}
+.zeile.illegal {
+    border-radius: 6px;
+    padding: 4px 6px;
+}
+.label { font-size: 13px; color: #333; }
+.preis { font-weight: 700; font-variant-numeric: tabular-nums; }
+.preis.leer { font-weight: 400; color: #777; }
+.ab { font-weight: 400; color: #555; font-size: 12px; }
+.stationen { font-size: 13px; margin-top: 2px; }
+.adresse { margin: 0 0 8px; color: #555; font-size: 13px; }
+.messwerte { max-height: 320px; overflow: auto; }
+.station table {
+    border-collapse: collapse;
+    width: 100%;
+    font-size: 13px;
+}
+.station th {
+    position: sticky;
+    top: 0;
+    background: #333;
+    color: #fff;
+    text-align: left;
+    padding: 4px 6px;
+}
+.station td {
+    padding: 4px 6px;
+    border-bottom: 1px solid #e4e8ee;
+    font-variant-numeric: tabular-nums;
+}
+.ort-stationen { margin-top: 8px; }
+.ort-stationen h2 { margin: 18px 0 10px; }
+@media (max-width: 1100px) {
+    .ort-grid, .station-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+<h1>Tagesauswertung 08:12:18</h1>
+<p class="hinweis">07.10.2026 · <a href="preis_summary_aktuell.html">ausführliche Liste</a></p>
+<div class="ort-grid">
+<article class='kachel auswertung'>
+<h2>Tagesauswertung 08:12:18</h2>
+<h3>Donauwörth</h3>
+<h4>E5</h4>
+<div class='zeile'>
+<div class='label'>erster günstigster Preis des Tages (07:00–08:00)</div>
+<div class='preis'>2,099 <span class='ab'>ab 07:20:08</span></div>
+<div class='stationen'>Tankstelle Oberholzner</div>
+</div>
+<div class='zeile'>
+<div class='label'>erster teuerster Preis des Tages (07:00–08:00)</div>
+<div class='preis'>2,239 <span class='ab'>ab 07:20:08</span></div>
+<div class='stationen'>Esso Nürnberger Straße<br>Esso Dillinger Straße<br>TotalEnergies Donauwörth<br>AGIP ENI Donauwörth</div>
+</div>
+<div class='zeile'>
+<div class='label'>günstigster Preis (11:00–11:59)</div>
+<div class='preis leer'>keine Messung</div>
+</div>
+<div class='zeile'>
+<div class='label'>teuerster Preis (11:00–11:59)</div>
+<div class='preis leer'>keine Messung</div>
+</div>
+<div class='zeile'>
+<div class='label'>günstigster Preis (13:00–23:59)</div>
+<div class='preis leer'>keine Messung</div>
+</div>
+<div class='zeile'>
+<div class='label'>teuerster Preis (13:00–23:59)</div>
+<div class='preis leer'>keine Messung</div>
+</div>
+<h4>E10</h4>
+<div class='zeile'>
+<div class='label'>erster günstigster Preis des Tages (07:00–08:00)</div>
+<div class='preis'>2,069 <span class='ab'>ab 07:20:08</span></div>
+<div class='stationen'>Tankstelle Oberholzner</div>
+</div>
+<div class='zeile'>
+<div class='label'>erster teuerster Preis des Tages (07:00–08:00)</div>
+<div class='preis'>2,179 <span class='ab'>ab 07:20:08</span></div>
+<div class='stationen'>Esso Nürnberger Straße<br>Esso Dillinger Straße<br>TotalEnergies Donauwörth<br>AGIP ENI Donauwörth</div>
+</div>
+<div class='zeile'>
+<div class='label'>günstigster Preis (11:00–11:59)</div>
+<div class='preis leer'>keine Messung</div>
+</div>
+<div class='zeile'>
+<div class='label'>teuerster Preis (11:00–11:59)</div>
+<div class='preis leer'>keine Messung</div>
+</div>
+<div class='zeile'>
+<div class='label'>günstigster Preis (13:00–23:59)</div>
+<div class='preis leer'>keine Messung</div>
+</div>
+<div class='zeile'>
+<div class='label'>teuerster Preis (13:00–23:59)</div>
+<div class='preis leer'>keine Messung</div>
+</div>
+<h4>Diesel</h4>
+<div class='zeile'>
+<div class='label'>erster günstigster Preis des Tages (07:00–08:00)</div>
+<div class='preis'>2,249 <span class='ab'>ab 07:20:08</span></div>
+<div class='stationen'>Tankstelle Oberholzner<br>Bavaria Petrol Donauwörth</div>
+</div>
+<div class='zeile'>
+<div class='label'>erster teuerster Preis des Tages (07:00–08:00)</div>
+<div class='preis'>2,269 <span class='ab'>ab 07:20:08</span></div>
+<div class='stationen'>AGIP ENI Donauwörth</div>
+</div>
+<div class='zeile'>
+<div class='label'>günstigster Preis (11:00–11:59)</div>
+<div class='preis leer'>keine Messung</div>
+</div>
+<div class='zeile'>
+<div class='label'>teuerster Preis (11:00–11:59)</div>
+<div class='preis leer'>keine Messung</div>
+</div>
+<div class='zeile'>
+<div class='label'>günstigster Preis (13:00–23:59)</div>
+<div class='preis leer'>keine Messung</div>
+</div>
+<div class='zeile'>
+<div class='label'>teuerster Preis (13:00–23:59)</div>
+<div class='preis leer'>keine Messung</div>
+</div>
+</article><article class='kachel auswertung'>
+<h2>Tagesauswertung 08:12:18</h2>
+<h3>Bäumenheim</h3>
+<h4>E5</h4>
+<div class='zeile'>
+<div class='label'>erster günstigster Preis des Tages (07:00–08:00)</div>
+<div class='preis'>2,189 <span class='ab'>ab 07:20:08</span></div>
+<div class='stationen'>SEEL Asbach-Bäumenheim</div>
+</div>
+<div class='zeile'>
+<div class='label'>erster teuerster Preis des Tages (07:00–08:00)</div>
+<div class='preis'>2,199 <span class='ab'>ab 07:20:08</span></div>
+<div class='stationen'>Tankstelle Kuntze Bäumenheim</div>
+</div>
+<div class='zeile'>
+<div class='label'>günstigster Preis (11:00–11:59)</div>
+<div class='preis leer'>keine Messung</div>
+</div>
+<div class='zeile'>
+<div class='label'>teuerster Preis (11:00–11:59)</div>
+<div class='preis leer'>keine Messung</div>
+</div>
+<div class='zeile'>
+<div class='label'>günstigster Preis (13:00–23:59)</div>
+<div class='preis leer'>keine Messung</div>
+</div>
+<div class='zeile'>
+<div class='label'>teuerster Preis (13:00–23:59)</div>
+<div class='preis leer'>keine Messung</div>
+</div>
+<h4>E10</h4>
+<div class='zeile'>
+<div class='label'>erster günstigster Preis des Tages (07:00–08:00)</div>
+<div class='preis'>2,139 <span class='ab'>ab 07:20:08</span></div>
+<div class='stationen'>Tankstelle Kuntze Bäumenheim</div>
+</div>
+<div class='zeile'>
+<div class='label'>erster teuerster Preis des Tages (07:00–08:00)</div>
+<div class='preis'>2,149 <span class='ab'>ab 07:20:08</span></div>
+<div class='stationen'>SEEL Asbach-Bäumenheim</div>
+</div>
+<div class='zeile'>
+<div class='label'>günstigster Preis (11:00–11:59)</div>
+<div class='preis leer'>keine Messung</div>
+</div>
+<div class='zeile'>
+<div class='label'>teuerster Preis (11:00–11:59)</div>
+<div class='preis leer'>keine Messung</div>
+</div>
+<div class='zeile'>
+<div class='label'>günstigster Preis (13:00–23:59)</div>
+<div class='preis leer'>keine Messung</div>
+</div>
+<div class='zeile'>
+<div class='label'>teuerster Preis (13:00–23:59)</div>
+<div class='preis leer'>keine Messung</div>
+</div>
+<h4>Diesel</h4>
+<div class='zeile'>
+<div class='label'>erster günstigster Preis des Tages (07:00–08:00)</div>
+<div class='preis'>2,249 <span class='ab'>ab 07:20:08</span></div>
+<div class='stationen'>SEEL Asbach-Bäumenheim</div>
+</div>
+<div class='zeile'>
+<div class='label'>erster teuerster Preis des Tages (07:00–08:00)</div>
+<div class='preis'>2,349 <span class='ab'>ab 07:20:08</span></div>
+<div class='stationen'>Tankstelle Kuntze Bäumenheim</div>
+</div>
+<div class='zeile'>
+<div class='label'>günstigster Preis (11:00–11:59)</div>
+<div class='preis leer'>keine Messung</div>
+</div>
+<div class='zeile'>
+<div class='label'>teuerster Preis (11:00–11:59)</div>
+<div class='preis leer'>keine Messung</div>
+</div>
+<div class='zeile'>
+<div class='label'>günstigster Preis (13:00–23:59)</div>
+<div class='preis leer'>keine Messung</div>
+</div>
+<div class='zeile'>
+<div class='label'>teuerster Preis (13:00–23:59)</div>
+<div class='preis leer'>keine Messung</div>
+</div>
+</article><article class='kachel auswertung'>
+<h2>Tagesauswertung 08:12:18</h2>
+<h3>Möttingen</h3>
+<h4>E5</h4>
+<div class='zeile'>
+<div class='label'>erster günstigster Preis des Tages (07:00–08:00)</div>
+<div class='preis'>2,189 <span class='ab'>ab 07:20:08</span></div>
+<div class='stationen'>SEEL Möttingen<br>HEIM Möttingen</div>
+</div>
+<div class='zeile'>
+<div class='label'>erster teuerster Preis des Tages (07:00–08:00)</div>
+<div class='preis'>2,189 <span class='ab'>ab 07:20:08</span></div>
+<div class='stationen'>SEEL Möttingen<br>HEIM Möttingen</div>
+</div>
+<div class='zeile'>
+<div class='label'>günstigster Preis (11:00–11:59)</div>
+<div class='preis leer'>keine Messung</div>
+</div>
+<div class='zeile'>
+<div class='label'>teuerster Preis (11:00–11:59)</div>
+<div class='preis leer'>keine Messung</div>
+</div>
+<div class='zeile'>
+<div class='label'>günstigster Preis (13:00–23:59)</div>
+<div class='preis leer'>keine Messung</div>
+</div>
+<div class='zeile'>
+<div class='label'>teuerster Preis (13:00–23:59)</div>
+<div class='preis leer'>keine Messung</div>
+</div>
+<h4>E10</h4>
+<div class='zeile'>
+<div class='label'>erster günstigster Preis des Tages (07:00–08:00)</div>
+<div class='preis'>2,129 <span class='ab'>ab 07:20:08</span></div>
+<div class='stationen'>SEEL Möttingen<br>HEIM Möttingen</div>
+</div>
+<div class='zeile'>
+<div class='label'>erster teuerster Preis des Tages (07:00–08:00)</div>
+<div class='preis'>2,129 <span class='ab'>ab 07:20:08</span></div>
+<div class='stationen'>SEEL Möttingen<br>HEIM Möttingen</div>
+</div>
+<div class='zeile'>
+<div class='label'>günstigster Preis (11:00–11:59)</div>
+<div class='preis leer'>keine Messung</div>
+</div>
+<div class='zeile'>
+<div class='label'>teuerster Preis (11:00–11:59)</div>
+<div class='preis leer'>keine Messung</div>
+</div>
+<div class='zeile'>
+<div class='label'>günstigster Preis (13:00–23:59)</div>
+<div class='preis leer'>keine Messung</div>
+</div>
+<div class='zeile'>
+<div class='label'>teuerster Preis (13:00–23:59)</div>
+<div class='preis leer'>keine Messung</div>
+</div>
+<h4>Diesel</h4>
+<div class='zeile'>
+<div class='label'>erster günstigster Preis des Tages (07:00–08:00)</div>
+<div class='preis'>2,249 <span class='ab'>ab 07:20:08</span></div>
+<div class='stationen'>SEEL Möttingen<br>HEIM Möttingen</div>
+</div>
+<div class='zeile'>
+<div class='label'>erster teuerster Preis des Tages (07:00–08:00)</div>
+<div class='preis'>2,249 <span class='ab'>ab 07:20:08</span></div>
+<div class='stationen'>SEEL Möttingen<br>HEIM Möttingen</div>
+</div>
+<div class='zeile'>
+<div class='label'>günstigster Preis (11:00–11:59)</div>
+<div class='preis leer'>keine Messung</div>
+</div>
+<div class='zeile'>
+<div class='label'>teuerster Preis (11:00–11:59)</div>
+<div class='preis leer'>keine Messung</div>
+</div>
+<div class='zeile'>
+<div class='label'>günstigster Preis (13:00–23:59)</div>
+<div class='preis leer'>keine Messung</div>
+</div>
+<div class='zeile'>
+<div class='label'>teuerster Preis (13:00–23:59)</div>
+<div class='preis leer'>keine Messung</div>
+</div>
+</article>
+</div>
+<p class="legende">Rot: Preis nach 12:59 Uhr höher als der letzte Preis dieser Tankstelle bis 12:59 Uhr.</p>
+<section class='ort-stationen'><h2>Donauwörth</h2><div class='station-grid'><article class='kachel station'><h3>AGIP ENI Donauwörth</h3><p class='adresse'>Bürgermeister-Hefele-Strasse 1</p><div class='messwerte'><table><tr><th>Zeit</th><th>E5</th><th>E10</th><th>Diesel</th></tr><tr><td>08:12:18</td><td>2,229</td><td>2,169</td><td>2,269</td></tr><tr><td>07:20:08</td><td>2,239</td><td>2,179</td><td>2,269</td></tr></table></div></article><article class='kachel station'><h3>Bavaria Petrol Donauwörth</h3><p class='adresse'>Neurieder Weg 33</p><div class='messwerte'><table><tr><th>Zeit</th><th>E5</th><th>E10</th><th>Diesel</th></tr><tr><td>08:12:18</td><td>2,219</td><td>2,159</td><td>2,249</td></tr><tr><td>07:20:08</td><td>2,229</td><td>2,169</td><td>2,249</td></tr></table></div></article><article class='kachel station'><h3>Esso Dillinger Straße</h3><p class='adresse'>DILLINGER STR. 25</p><div class='messwerte'><table><tr><th>Zeit</th><th>E5</th><th>E10</th><th>Diesel</th></tr><tr><td>08:12:18</td><td>2,239</td><td>2,179</td><td>2,259</td></tr><tr><td>07:20:08</td><td>2,239</td><td>2,179</td><td>2,259</td></tr></table></div></article><article class='kachel station'><h3>Esso Nürnberger Straße</h3><p class='adresse'>Nürnberger Str. 10</p><div class='messwerte'><table><tr><th>Zeit</th><th>E5</th><th>E10</th><th>Diesel</th></tr><tr><td>08:12:18</td><td>2,239</td><td>2,179</td><td>2,259</td></tr><tr><td>07:20:08</td><td>2,239</td><td>2,179</td><td>2,259</td></tr></table></div></article><article class='kachel station'><h3>Tankstelle Oberholzner</h3><p class='adresse'>Sternschanzenstraße 17</p><div class='messwerte'><table><tr><th>Zeit</th><th>E5</th><th>E10</th><th>Diesel</th></tr><tr><td>08:12:18</td><td>2,099</td><td>2,069</td><td>2,249</td></tr><tr><td>07:20:08</td><td>2,099</td><td>2,069</td><td>2,249</td></tr></table></div></article><article class='kachel station'><h3>TotalEnergies Donauwörth</h3><p class='adresse'>Augsburger Str. 16</p><div class='messwerte'><table><tr><th>Zeit</th><th>E5</th><th>E10</th><th>Diesel</th></tr><tr><td>08:12:18</td><td>2,229</td><td>2,169</td><td>2,259</td></tr><tr><td>07:20:08</td><td>2,239</td><td>2,179</td><td>2,259</td></tr></table></div></article></div></section><section class='ort-stationen'><h2>Bäumenheim</h2><div class='station-grid'><article class='kachel station'><h3>SEEL Asbach-Bäumenheim</h3><p class='adresse'>Donauwörther Str. 29</p><div class='messwerte'><table><tr><th>Zeit</th><th>E5</th><th>E10</th><th>Diesel</th></tr><tr><td>08:12:18</td><td>2,189</td><td>2,149</td><td>2,249</td></tr><tr><td>07:20:08</td><td>2,189</td><td>2,149</td><td>2,249</td></tr></table></div></article><article class='kachel station'><h3>Tankstelle Kuntze Bäumenheim</h3><p class='adresse'>Raiffeisen Str. 2</p><div class='messwerte'><table><tr><th>Zeit</th><th>E5</th><th>E10</th><th>Diesel</th></tr><tr><td>08:12:18</td><td>2,199</td><td>2,139</td><td>2,349</td></tr><tr><td>07:20:08</td><td>2,199</td><td>2,139</td><td>2,349</td></tr></table></div></article></div></section><section class='ort-stationen'><h2>Möttingen</h2><div class='station-grid'><article class='kachel station'><h3>HEIM Möttingen</h3><p class='adresse'>Romantische Str. 14</p><div class='messwerte'><table><tr><th>Zeit</th><th>E5</th><th>E10</th><th>Diesel</th></tr><tr><td>08:12:18</td><td>2,189</td><td>2,129</td><td>2,249</td></tr><tr><td>07:20:08</td><td>2,189</td><td>2,129</td><td>2,249</td></tr></table></div></article><article class='kachel station'><h3>SEEL Möttingen</h3><p class='adresse'>Romantische Str. 24</p><div class='messwerte'><table><tr><th>Zeit</th><th>E5</th><th>E10</th><th>Diesel</th></tr><tr><td>08:12:18</td><td>2,189</td><td>2,129</td><td>2,249</td></tr><tr><td>07:20:08</td><td>2,189</td><td>2,129</td><td>2,249</td></tr></table></div></article></div></section>
+</body>
+</html>
